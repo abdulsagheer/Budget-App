@@ -17,11 +17,13 @@ export const BudgetsProvider = ({ children }) => {
 	function getBudgetExpenses(budgetId) {
 		return expenses.filter((expense) => expense.budgetId === budgetId);
 	}
+	
 	function addExpense({ description, amount, budgetId }) {
 		setExpenses((prevExpenses) => {
 			return [...prevExpenses, { id: uuidV4(), description, amount, budgetId }];
 		});
 	}
+
 	function addBudget({ name, max }) {
 		setBudgets((prevBudgets) => {
 			if (prevBudgets.find((budget) => budget.name === name)) {
@@ -30,6 +32,7 @@ export const BudgetsProvider = ({ children }) => {
 			return [...prevBudgets, { id: uuidV4(), name, max }];
 		});
 	}
+
 	function deleteBudget({ id }) {
 		setExpenses((prevExpenses) => {
 			return prevExpenses.map((expense) => {
